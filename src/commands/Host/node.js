@@ -40,7 +40,7 @@ module.exports = class MusicNode extends Command {
 		} else if (message.args[0].toLowerCase() == 'remove') {
 			try {
 				await new Node({
-					host: message.args[1] ?? 'localhost',
+					host: message.args[1] ?? 'lavalink1121.herokuapp.com',
 					password: message.args[2] ?? 'youshallnotpass',
 					port: message.args[3] ?? 5000,
 				}).destroy();
