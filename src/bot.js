@@ -28,7 +28,6 @@ app.get('/', (req, res) => {
   res.json('This bot should be online! Uptimerobot will keep it alive');
 });
 
-app.listen(process.env.PORT);
 // Load commands
 (async () => {
 	// load commands
