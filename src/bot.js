@@ -70,6 +70,7 @@ const path = require('path');
 	// Connect bot to discord API
 	const token = bot.config.token;
 	bot.login(token).catch(e => bot.logger.error(e.message));
+	.listen(process.env.PORT || 5000)
 
 	// handle unhandledRejection errors
 	process.on('unhandledRejection', err => {
