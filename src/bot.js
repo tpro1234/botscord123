@@ -14,12 +14,12 @@ const path = require('path');
 // Load commands
 (async () => {
 	// load commands
-	const cmdFolders = (await readdir('./commands/')).filter((v, i, a) => a.indexOf(v) === i);
+	const cmdFolders = (await readdir('./src/commands/')).filter((v, i, a) => a.indexOf(v) === i);
 	bot.logger.log('=-=-=-=-=-=-=- Loading command(s): 125 -=-=-=-=-=-=-=');
 	cmdFolders.forEach(async (dir) => {
 		if (bot.config.disabledPlugins.includes(dir)) return;
 		try {
-			const commands = (await readdir('./commands/' + dir + '/')).filter((v, i, a) => a.indexOf(v) === i);
+			const commands = (await readdir('./src/commands/' + dir + '/')).filter((v, i, a) => a.indexOf(v) === i);
 			commands.forEach((cmd) => {
 				if (bot.config.disabledCommands.includes(cmd.replace('.js', ''))) return;
 				const resp = bot.loadCommand('./commands/' + dir, cmd);
@@ -31,10 +31,10 @@ const path = require('path');
 	});
 
 	// load events
-	const evtFolder = await readdir('./events/');
+	const evtFolder = await readdir('./src/events/');
 	bot.logger.log(`=-=-=-=-=-=-=- Loading events(s): ${evtFolder.length} -=-=-=-=-=-=-=`);
 	evtFolder.forEach(async folder => {
-		const folders = await readdir('./events/' + folder + '/');
+		const folders = await readdir('./src/events/' + folder + '/');
 		folders.forEach(async file => {
 			delete require.cache[file];
 			const { name } = path.parse(file);
