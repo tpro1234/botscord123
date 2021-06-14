@@ -11,6 +11,18 @@ const { promisify } = require('util');
 const readdir = promisify(require('fs').readdir);
 const path = require('path');
 
+const express = require('express');
+const keepalive = require('express-glitch-keepalive');
+
+const app = express();
+
+app.use(keepalive);
+
+app.get('/', (req, res) => {
+  res.json('This bot should be online! Uptimerobot will keep it alive');
+});
+
+app.listen(process.env.PORT);
 // Load commands
 (async () => {
 	// load commands
@@ -70,7 +82,6 @@ const path = require('path');
 	// Connect bot to discord API
 	const token = bot.config.token;
 	bot.login(token).catch(e => bot.logger.error(e.message));
-	.listen(process.env.PORT || 5000)
 
 	// handle unhandledRejection errors
 	process.on('unhandledRejection', err => {
