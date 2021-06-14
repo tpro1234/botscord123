@@ -12,7 +12,7 @@ module.exports = async (bot) => {
 
 	bot.manager = new Manager({
 		nodes: [
-			{ host: 'lavalink1121.herokuapp.com', port: 5000, password: 'youshallnotpass' },
+			{ host: 'lavalink.herokuapp.com', port: 5000, password: 'youshallnotpass' },
 		],
 		plugins: [
 			new Spotify({ clientID, clientSecret }),
