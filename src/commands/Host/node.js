@@ -28,7 +28,7 @@ module.exports = class MusicNode extends Command {
 			try {
 				// Connect to new node
 				await new Node({
-					host: message.args[1] ?? 'https://lavalink1121.herokuapp.com/',
+					host: message.args[1] ?? 'lavalink1121.herokuapp.com',
 					password: message.args[2] ?? 'youshallnotpass',
 					port: message.args[3] ?? 5000,
 				}).connect();
