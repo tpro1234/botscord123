@@ -8,7 +8,7 @@ const guildSchema = Schema({
 	welcomePlugin: { type: Boolean, default: true },
 	// if anti-raid is true and welcome plugin is true both will get activated so this will make sure anti-riad runs first and once 'accepeted' welcome plugn will run
 	welcomeRaidConnect: { type: Boolean, default: false },
-	welcomeMessageToggle: { type: Boolean, default: false },
+	welcomeMessageToggle: { type: Boolean, default: true },
 	welcomeMessageChannel: { type: String, default: '830041375310610453' },
 	welcomeMessageText: { type: String, default: 'Hello {user}, Welcome to **{server}**! *img* ' },
 	welcomePrivateToggle: { type: Boolean, default: false },
