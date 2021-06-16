@@ -10,21 +10,7 @@ const guildSchema = Schema({
 	welcomeRaidConnect: { type: Boolean, default: false },
 	welcomeMessageToggle: { type: Boolean, default: true },
 	welcomeMessageChannel: { type: String, default: '830041375310610453' },
-	welcomeMessageText: { type: String, default: 'member.guild.channels.get('JOIN/LEAVE Channel ID').send({embed: {
-color: 3447003,
-title: "**SERVER NAME** Welcome Bot!",
-url: "WEBSITE URL",
-description: "Welcome *" + member + "* to the **Server name** discord server!",
-fields: [{
-    name: "Information",
-    value: "Some info on the server"
-  }
-],
-timestamp: new Date(),
-footer: {
-  icon_url: client.user.avatarURL,
-  text: "© NAME OF SERVER 2018 - 2019"
-}' },
+	welcomeMessageText: { type: String, default: 'Hello {user}, Welcome to **{server}**! *img*' },
 	welcomePrivateToggle: { type: Boolean, default: false },
 	welcomePrivateText: { type: String, default: 'Have a great time here in **{server}**.' },
 	welcomeRoleToggle: { type: Boolean, default: false },
