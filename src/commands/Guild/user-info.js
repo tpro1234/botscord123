@@ -18,6 +18,22 @@ module.exports = class UserInfo extends Command {
 		});
 	}
 
+    message.guild.fetchInvites()
+        .then(invites =>
+            {
+                //filter through the invites
+                const userInvites = invites.array().filter(i => i.inviter.id === user.id);
+                //get the invites using a for loop
+                var userInviteLinks = "";
+                for(var i=0; i < userInvites.length; i++) {
+                    var invite = userInvites[i];
+                    userInviteLinks += `\n https://discord.gg/${invite['code']}`;
+                }
+                //Sends the message
+             //   message.reply(`Here are your invites: ${userInviteLinks}`);
+            }
+        )
+});
 	// Run command
 	async run(bot, message) {
 		// Get user
@@ -35,6 +51,7 @@ module.exports = class UserInfo extends Command {
 				{ name: message.translate('guild/user-info:CREATE'), value: moment(members[0].user.createdAt).format('lll'), inline: true },
 				{ name: message.translate('guild/user-info:STATUS'), value: `\`${(members[0].presence.activities.length >= 1) ? `${members[0].presence.activities[0].name} - ${(members[0].presence.activities[0].type == 'CUSTOM_STATUS') ? members[0].presence.activities[0].state : members[0].presence.activities[0].details}` : 'None'}\``, inline: true },
 				{ name: message.translate('guild/user-info:ROLE'), value: members[0].roles.highest, inline: true },
+				{ name: message.translate('guild/user-info:INVITE'), value: ${invite}, inline: true },
 				{ name: message.translate('guild/user-info:JOIN'), value: moment(members[0].joinedAt).format('lll'), inline: true },
 				{ name: message.translate('guild/user-info:NICK'), value: members[0].nickname != null ? members[0].nickname : message.translate('misc:NONE'), inline: true },
 				{ name: message.translate('guild/user-info:ROLES'), value: members[0].roles.cache.sort((a, b) => b.rawPosition - a.rawPosition).reduce((a, b) => `${a}, ${b}`) },
