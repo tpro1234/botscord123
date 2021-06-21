@@ -10,7 +10,7 @@ const guildSchema = Schema({
 	welcomeRaidConnect: { type: Boolean, default: false },
 	welcomeMessageToggle: { type: Boolean, default: true },
 	welcomeMessageChannel: { type: String, default: '830041375310610453' },
-	WelcomeMessageText: { type: Array, default: ['GUILDBANADD', 'GUILDMEMBERADD'] },
+	WelcomeMessageText: { type: String, default: 'Have a great time **{server}** {tag}' },
 	welcomePrivateToggle: { type: Boolean, default: false },
 	welcomePrivateText: { type: String, default: 'Have a great time here in **{server}**.' },
 	welcomeRoleToggle: { type: Boolean, default: false },
