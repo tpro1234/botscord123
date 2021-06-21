@@ -33,7 +33,10 @@ const guildSchema = Schema({
 	MusicTriviaGenres: { type: Array, default: ['pop'] },
 	// logging plugin
 	ModLog: { type: Boolean, default: true },
-	ModLogEvents: { type: Array, default: ['GUILDBANADD', 'GUILDMEMBERADD'] },
+	ModLogEvents: { type: Array, default: ['CHANNELCREATE', 'CHANNELDELETE', 'CHANNELUPDATE', 'EMOJICREATE', 'EMOJIDELETE', 'EMOJIUPDATE',
+	'GUILDBANADD', 'GUILDBANREMOVE', 'GUILDMEMBERADD', 'GUILDMEMBERREMOVE', 'GUILDMEMBERUPDATE', 'GUILDUPDATE', 'MESSAGEDELETE',
+	'MESSAGEDELETEBULK', 'MESSAGEREACTIONADD', 'MESSAGEREACTIONREMOVE', 'MESSAGEREACTIONREMOVEALL', 'MESSAGEUPDATE', 'ROLECREATE', 'ROLEDELETE', 'ROLEUPDATE',
+	'VOICESTATEUPDATE', 'REPORT', 'WARNING', 'TICKET', 'INVITECREATE', 'INVITEDELETE'] },
 	ModLogChannel: { type: String, default: '854117644885819402' },
 	ModLogIgnoreBot: { type: Boolean, default: true },
 	// CommandCooldown
