@@ -22,7 +22,12 @@ module.exports = class UserInfo extends Command {
 var user = null;
 user = message.mentions.members.first() || message.author;
         
-message.guild.fetchInvites()
+
+
+	// Run command
+	async run(bot, message) {
+		
+	const invites = message.guild.fetchInvites()
 .then(invites =>
 {
     const userInvites = invites.array().filter(o => o.inviter.id === user.id);
@@ -34,12 +39,8 @@ message.guild.fetchInvites()
         userInviteCount += invite['uses'];
         userInviteCount - invite['left'];
     }
-
-    message.reply(`You have ${userInviteCount} invites.`);
+			
 });
-
-	// Run command
-	async run(bot, message) {
 		// Get user
 		const members = await message.getMember();
 
