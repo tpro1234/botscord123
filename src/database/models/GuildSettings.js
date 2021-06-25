@@ -19,7 +19,7 @@ const guildSchema = Schema({
 	welcomeGoodbyeText: { type: String, default: '**{user}** just left the server.' },
 	// 0 = no announcement, 1 = reply, 2 = choosen channel
 	LevelOption: { type: Number, default: 2 },
-	LevelChannel: { type: String, default: '830431879458717727' },
+	LevelChannel: { type: String, default: '857895752888746004' },
 	LevelMessage: { type: String, default: 'GG {user}, you have leveled up to {level}! Checkout our store in <#848972650608590848> to get your skin' },
 	LevelIgnoreRoles: { type: Array, default: ['No-xp'] },
 	LevelIgnoreChannel: { type: Array, default: ['No-xp'] },
