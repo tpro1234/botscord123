@@ -33,7 +33,7 @@ module.exports = class guildMemberAdd extends Event {
 
 			// Find channel and send message
 			try {
-				const modChannel = '830041375310610453' => bot.logger.error(`Error fetching guild: ${member.guild.id} logging channel`));
+				const modChannel = '830041375310610453'
 				if (modChannel && modChannel.guild.id == member.guild.id) bot.addEmbed(modChannel.id, embed);
 			} catch (err) {
 				bot.logger.error(`Event: '${this.conf.name}' has error: ${err.message}.`);
