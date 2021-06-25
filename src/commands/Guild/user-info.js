@@ -22,14 +22,25 @@ module.exports = class UserInfo extends Command {
 	async run(bot, message) {
 		
 		//invites
-		message.guild.fetchInvites()
-		const userInvites = invites.array().filter(o => o.inviter.id === user.id);
-		var userInviteCount = 0;
+        var user = message.author;
+
+        message.guild.fetchInvites()
+        .then
+
+        (invites =>
+            {
+                const userInvites = invites.array().filter(o => o.inviter.id === user.id);
+                var userInviteCount = 0;
                 for(var i=0; i < userInvites.length; i++)
                 {
-                var invitess = userInvites[i];
-                userInviteCount += invite['uses'];
+                    var invite = userInvites[i];
+                    userInviteCount += invite['uses'];
                 }
+                   
+            }
+        )
+    }
+});
 		
 		// Get user
 		const members = await message.getMember();
@@ -46,7 +57,7 @@ module.exports = class UserInfo extends Command {
 				{ name: message.translate('guild/user-info:CREATE'), value: moment(members[0].user.createdAt).format('lll'), inline: true },
 				{ name: message.translate('guild/user-info:STATUS'), value: `\`${(members[0].presence.activities.length >= 1) ? `${members[0].presence.activities[0].name} - ${(members[0].presence.activities[0].type == 'CUSTOM_STATUS') ? members[0].presence.activities[0].state : members[0].presence.activities[0].details}` : 'None'}\``, inline: true },
 				{ name: message.translate('guild/user-info:ROLE'), value: members[0].roles.highest, inline: true },
-				{ name: message.translate('guild/user-info:INVITE'), value: `${message.author.username} has ${invitess} invites`, inline: true },
+				{ name: message.translate('guild/user-info:INVITE'), value: `${message.author.username} has ${userInviteCount} invites`, inline: true },
 				{ name: message.translate('guild/user-info:JOIN'), value: moment(members[0].joinedAt).format('lll'), inline: true },
 				{ name: message.translate('guild/user-info:NICK'), value: members[0].nickname != null ? members[0].nickname : message.translate('misc:NONE'), inline: true },
 				{ name: message.translate('guild/user-info:ROLES'), value: members[0].roles.cache.sort((a, b) => b.rawPosition - a.rawPosition).reduce((a, b) => `${a}, ${b}`) },
