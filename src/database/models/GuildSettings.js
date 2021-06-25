@@ -38,6 +38,7 @@ const guildSchema = Schema({
 	'MESSAGEDELETEBULK', 'MESSAGEREACTIONADD', 'MESSAGEREACTIONREMOVE', 'MESSAGEREACTIONREMOVEALL', 'MESSAGEUPDATE', 'ROLECREATE', 'ROLEDELETE', 'ROLEUPDATE',
 	'VOICESTATEUPDATE', 'REPORT', 'WARNING', 'TICKET', 'INVITECREATE', 'INVITEDELETE'] },
 	ModLogChannel: { type: String, default: '854117644885819402' },
+	welcomec: { type: String, default: '830041375310610453' },
 	ModLogIgnoreBot: { type: Boolean, default: true },
 	// CommandCooldown
 	CommandChannelToggle: { type: Boolean, default: false },
