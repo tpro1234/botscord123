@@ -19,8 +19,8 @@ const guildSchema = Schema({
 	welcomeGoodbyeText: { type: String, default: '**{user}** just left the server.' },
 	// 0 = no announcement, 1 = reply, 2 = choosen channel
 	LevelOption: { type: Number, default: 2 },
-	LevelChannel: { type: String, default: '857895752888746004' },
-	LevelMessage: { type: String, default: 'GG {user}, you have leveled up to {level}! Checkout our store in <#848972650608590848> to get your skin' },
+	LevelChannel: { type: String, default: '857897157163089940' },
+	LevelMessage: { type: String, default: 'GG {user}, you have leveled up to {level}! Checkout our store to get your skin' },
 	LevelIgnoreRoles: { type: Array, default: ['No-xp'] },
 	LevelIgnoreChannel: { type: Array, default: ['No-xp'] },
 	LevelMultiplier: { type: Number, default: 1 },
@@ -44,7 +44,7 @@ const guildSchema = Schema({
 	CommandChannelToggle: { type: Boolean, default: false },
 	CommandChannels: { type: Array, default: [11111111] },
 	CommandCooldown: { type: Boolean, default: false },
-	CommandCooldownSec: { type: Number, default: 2 },
+	CommandCooldownSec: { type: Number, default: 1 },
 	// Moderation plugin
 	ModeratorRoles: { type: Array, default: ['owner'] },
 	MutedRole: { type: String, default: '830080261038276649' },
