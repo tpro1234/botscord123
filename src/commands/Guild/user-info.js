@@ -17,30 +17,9 @@ module.exports = class UserInfo extends Command {
 			examples: ['user-info userID', 'user-info @mention', 'user-info username'],
 		});
 	}
-	
-	
-var user = null;
-user = message.mentions.members.first() || message.author;
-        
-
 
 	// Run command
 	async run(bot, message) {
-		
-	const invitess = message.guild.fetchInvites()
-.then(invites =>
-{
-    const userInvites = invites.array().filter(o => o.inviter.id === user.id);
-    var userInviteCount = 0;
-
-    for(var i=0; i < userInvites.length; i++)
-    {
-        var invite = userInvites[i];
-        userInviteCount += invite['uses'];
-        userInviteCount - invite['left'];
-    }
-			
-});
 		// Get user
 		const members = await message.getMember();
 
@@ -56,7 +35,6 @@ user = message.mentions.members.first() || message.author;
 				{ name: message.translate('guild/user-info:CREATE'), value: moment(members[0].user.createdAt).format('lll'), inline: true },
 				{ name: message.translate('guild/user-info:STATUS'), value: `\`${(members[0].presence.activities.length >= 1) ? `${members[0].presence.activities[0].name} - ${(members[0].presence.activities[0].type == 'CUSTOM_STATUS') ? members[0].presence.activities[0].state : members[0].presence.activities[0].details}` : 'None'}\``, inline: true },
 				{ name: message.translate('guild/user-info:ROLE'), value: members[0].roles.highest, inline: true },
-				{ name: message.translate('guild/user-info:INVITE'), value: '${invitess}', inline: true },
 				{ name: message.translate('guild/user-info:JOIN'), value: moment(members[0].joinedAt).format('lll'), inline: true },
 				{ name: message.translate('guild/user-info:NICK'), value: members[0].nickname != null ? members[0].nickname : message.translate('misc:NONE'), inline: true },
 				{ name: message.translate('guild/user-info:ROLES'), value: members[0].roles.cache.sort((a, b) => b.rawPosition - a.rawPosition).reduce((a, b) => `${a}, ${b}`) },
