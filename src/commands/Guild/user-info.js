@@ -20,32 +20,23 @@ module.exports = class UserInfo extends Command {
 
 	// Run command
 	async run(bot, message) {
-		
-		//invites
-        var user = message.author;
-
-        var userId = message.author.id;
-
-        var userInvites = message.guild.fetchInvites().then(invites => invites.find(invite => invite.inviter.id === userId));
-
-        var useAmount = userInvites.uses;
-
-        if (useAmount === undefined) {
-
-            message.channel.send(`${message.author.username} has 0 invites`);
-        }
-
-        else {
-
-            message.channel.send(`${message.author.username} has ${useAmount} invites`);
-        }
-    }
-}	
 		// Get user
 		const members = await message.getMember();
 
+
+		//invite
+			var userId = message.author.id;
+	
+			var userInvites = message.guild.fetchInvites().then(invites => invites.find(invite => invite.inviter.id === userId));
+	
+			var useAmount = userInvites.uses;
+	
+			if (useAmount === undefined) {
+	
+				message.channel.send(`${message.author.username} has 0 invites`);
+			}
 		// send user info
-		const embed = new Embed(bot, message.guild)
+		const embed = new Embed(bot, message.guild,message)
 			.setAuthor(members[0].user.tag, members[0].user.displayAvatarURL())
 			.setColor(3447003)
 			.setThumbnail(members[0].user.displayAvatarURL({ format: 'png', size: 512 }))
@@ -56,11 +47,12 @@ module.exports = class UserInfo extends Command {
 				{ name: message.translate('guild/user-info:CREATE'), value: moment(members[0].user.createdAt).format('lll'), inline: true },
 				{ name: message.translate('guild/user-info:STATUS'), value: `\`${(members[0].presence.activities.length >= 1) ? `${members[0].presence.activities[0].name} - ${(members[0].presence.activities[0].type == 'CUSTOM_STATUS') ? members[0].presence.activities[0].state : members[0].presence.activities[0].details}` : 'None'}\``, inline: true },
 				{ name: message.translate('guild/user-info:ROLE'), value: members[0].roles.highest, inline: true },
+				{ name: message.translate('guild/user-info:INVITE'), value: `has ${useAmount} invites`, inline: true },
 				{ name: message.translate('guild/user-info:JOIN'), value: moment(members[0].joinedAt).format('lll'), inline: true },
 				{ name: message.translate('guild/user-info:NICK'), value: members[0].nickname != null ? members[0].nickname : message.translate('misc:NONE'), inline: true },
 				{ name: message.translate('guild/user-info:ROLES'), value: members[0].roles.cache.sort((a, b) => b.rawPosition - a.rawPosition).reduce((a, b) => `${a}, ${b}`) },
-				
 			);
 		message.channel.send(embed);
-               message.channel.send(`You have ${userInviteCount} invites.`);
-
+		message.channel.send('undefined means = no invites');
+	}
+};
