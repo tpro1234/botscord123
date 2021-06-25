@@ -9,7 +9,7 @@ const guildSchema = Schema({
 	// if anti-raid is true and welcome plugin is true both will get activated so this will make sure anti-riad runs first and once 'accepeted' welcome plugn will run
 	welcomeRaidConnect: { type: Boolean, default: false },
 	welcomeMessageToggle: { type: Boolean, default: false },
-	welcomeMessageChannel: { type: String, default: '830041375310610453' },
+	welcomeMessageChannel: { type: String, default: '857894570648928287' },
 	welcomeMessageText: { type: String, default: 'Hello {user}, Welcome to **{server}**!' },
 	welcomePrivateToggle: { type: Boolean, default: false },
 	welcomePrivateText: { type: String, default: 'Have a great time here in **{server}**.' },
@@ -38,7 +38,7 @@ const guildSchema = Schema({
 	'MESSAGEDELETEBULK', 'MESSAGEREACTIONADD', 'MESSAGEREACTIONREMOVE', 'MESSAGEREACTIONREMOVEALL', 'MESSAGEUPDATE', 'ROLECREATE', 'ROLEDELETE', 'ROLEUPDATE',
 	'VOICESTATEUPDATE', 'REPORT', 'WARNING', 'TICKET', 'INVITECREATE', 'INVITEDELETE'] },
 	ModLogChannel: { type: String, default: '854117644885819402' },
-	welcomec: { type: String, default: '830041375310610453' },
+	welcomec: { type: String, default: '857894570648928287' },
 	ModLogIgnoreBot: { type: Boolean, default: true },
 	// CommandCooldown
 	CommandChannelToggle: { type: Boolean, default: false },
