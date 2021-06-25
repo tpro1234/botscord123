@@ -24,24 +24,23 @@ module.exports = class UserInfo extends Command {
 		//invites
         var user = message.author;
 
-        message.guild.fetchInvites()
-        .then
+        var userId = message.author.id;
 
-        (invites =>
-            {
-                const userInvites = invites.array().filter(o => o.inviter.id === user.id);
-                var userInviteCount = 0;
-                for(var i=0; i < userInvites.length; i++)
-                {
-                    var invite = userInvites[i];
-                    userInviteCount += invite['uses'];
-                }
-                   
-            }
-        )
+        var userInvites = message.guild.fetchInvites().then(invites => invites.find(invite => invite.inviter.id === userId));
+
+        var useAmount = userInvites.uses;
+
+        if (useAmount === undefined) {
+
+            message.channel.send(`${message.author.username} has 0 invites`);
+        }
+
+        else {
+
+            message.channel.send(`${message.author.username} has ${useAmount} invites`);
+        }
     }
-});
-		
+}	
 		// Get user
 		const members = await message.getMember();
 
@@ -64,5 +63,4 @@ module.exports = class UserInfo extends Command {
 			);
 		message.channel.send(embed);
                message.channel.send(`You have ${userInviteCount} invites.`);
-	}
-};
+
