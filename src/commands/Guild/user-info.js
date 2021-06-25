@@ -30,11 +30,6 @@ module.exports = class UserInfo extends Command {
 			var userInvites = message.guild.fetchInvites().then(invites => invites.find(invite => invite.inviter.id === userId));
 	
 			var useAmount = userInvites.uses;
-	
-			if (useAmount === undefined) {
-	
-				message.channel.send(`${message.author.username} has 0 invites`);
-			}
 		// send user info
 		const embed = new Embed(bot, message.guild,message)
 			.setAuthor(members[0].user.tag, members[0].user.displayAvatarURL())
