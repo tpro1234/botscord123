@@ -26,7 +26,7 @@ module.exports = class guildMemberAdd extends Event {
 			const embed = new Embed(bot, member.guild)
 				.setDescription(`${member.toString()}\nMember count: ${member.guild.memberCount}`)
 				.setColor(3066993)
-				.setFooter(`ID: ${member.id}`)
+				.setFooter(`Welcome To Top-Stage`)
 				.setThumbnail("https://cdn.discordapp.com/avatars/853766510204289064/cb811b77d11d9ef506597368e304797d.webp?size=1024")
 				.setAuthor('User joined:', member.user.displayAvatarURL())
 				.setTimestamp();
