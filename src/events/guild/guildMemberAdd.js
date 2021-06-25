@@ -27,7 +27,7 @@ module.exports = class guildMemberAdd extends Event {
 				.setDescription(`${member.toString()}\nMember count: ${member.guild.memberCount}`)
 				.setColor(3066993)
 				.setFooter(`ID: ${member.id}`)
-				.setThumbnail(member.user.displayAvatarURL())
+				.setThumbnail("https://cdn.discordapp.com/avatars/853766510204289064/cb811b77d11d9ef506597368e304797d.webp?size=1024")
 				.setAuthor('User joined:', member.user.displayAvatarURL())
 				.setTimestamp();
 
